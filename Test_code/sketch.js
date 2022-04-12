@@ -1,7 +1,10 @@
-function setup() {
-  createCanvas(400, 400);
+function setup() 
+{
+  createCanvas(800, 800);
 }
 
-function draw() {
-  background(220);
+function draw() 
+{
+  background(290,0,300);
+  rect(0,100,100,100);
 }
