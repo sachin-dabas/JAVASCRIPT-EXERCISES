@@ -1,2 +1,2 @@
 # JAVASCRIPT-EXERCISES
-Exploring new colding language
+Exploring new coding language
