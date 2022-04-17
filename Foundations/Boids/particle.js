@@ -15,11 +15,12 @@ function Particle(x,y)
 
     this.show = function()
     {
-        stroke(255);
-        strokeWeight(10);
+        stroke(255,100);
+        strokeWeight(4);
         point(this.pos.x,this.pos.y);
     }
 
+    //attractor function
     this.attracted = function(target)
     {
         var force = p5.Vector.sub(target,this.pos);

@@ -1,24 +1,38 @@
-//sachindabas
+// Reference
+// Daniel Shiffman
+// http://codingtra.in
+// Attraction / Repulsion
+// Video: https://youtu.be/OAcXnzRNiCY
 
 var attractor;
-var particle;
+var particles = [];
 
 function setup()
 {
-    createCanvas(800,800);
-    attractor = createVector(400,400);
-    particle = new Particle(200,200);
+    createCanvas(400,400);
+    for (var i = 0; i < 50; i++) {
+        particles.push(new Particle(200,200));
+    }
+
+    attractor = createVector(200,200);
+    // particle = ;
+    background(50);
 }
 
 
 function draw()
 {
-    background(50);
     stroke(255);
-    strokeWeight(10);
+    strokeWeight(4);
+    //make the attractor point
     point(attractor.x,attractor.y);
 
-    particle.attracted(attractor);
-    particle.update();
-    particle.show();
+    for(var i =0; i < 50; i++)
+    {
+        var particle = particles[i];
+        particle.attracted(attractor);
+        particle.update();
+        particle.show();
+    }
+
 }
