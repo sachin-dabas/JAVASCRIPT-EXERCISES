@@ -1,38 +1,41 @@
 //click and get the circle
 // attracted to the point
 // restricted to the radius
-// 
 
 function Particle(x,y) {
     this.pos = createVector(x,y);
     this.vel = createVector();
     this.acc = createVector();
 
-    this.show = function() {
-        stroke(255);
-        strokeWeight(10);
-        circle(this.pos.x,this.pos.y);
-        point(this.pos.x,this.pos.y);
-    }
-
+    
     this.update = function() {
-        this.vel.add(this.acc);
+        // this.vel.add(this.acc);
         this.pos.add(this.vel);
         // this.acc.mult(0);
     }
-
+    
+    //attracts the object
     this.attracted = function(target) {
         var force = p5.Vector.sub(target,this.pos);
+        
         // var d = force.magSq();
         // d = constrain(d,5,25);
         // var G = 100;
         // var strength = G / (d * d);
-        force.setMag(1);
+        // force.setMag(1);
         // if (d < 5) {
-        //     force.mult(-1);
-        // } 
-        this.acc = force;
-    }
+            //     force.mult(-1);
+            // } 
+            // this.acc = force;
+        }
+
+        //draws the object
+        this.show = function() {
+            stroke(255,255,255);
+            strokeWeight(1);
+            point(this.pos.x,this.pos.y);
+            circle(this.pos.x,this.pos.y,100);
+        }
 }
 
 
