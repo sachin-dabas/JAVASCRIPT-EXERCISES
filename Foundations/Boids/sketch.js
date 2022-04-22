@@ -9,6 +9,7 @@ var particles  = [];
 
 function setup() {
     createCanvas(800,800);
+    frameRate(10);
     //constructor function
     for (var i = 0; i < 1; i++) {
         particles.push(new Particle(200,200));
@@ -33,7 +34,6 @@ function draw() {
     noFill();
     point(attractor.x,attractor.y);
     circle(400,400,40,40);
-    
     // create the boundary
     // stroke(255,255,255); // gives the color
     // strokeWeight(1);
@@ -41,8 +41,11 @@ function draw() {
     
     for (var i = 0; i < particles.length; i++) {
         var particle = particles[i];
+        stroke(0,255,0); //gives the color
+        strokeWeight(2);
         particle.attracted(attractor);
         particle.update(attractor);
         particle.show();
+        
     }
     }

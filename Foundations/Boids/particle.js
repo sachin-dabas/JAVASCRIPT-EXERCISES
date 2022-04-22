@@ -10,7 +10,12 @@ function Particle(x,y) {
     
     this.update = function(target) {
         // this.vel.add(this.acc);
-        var vect = p5.Vector.sub(target,this.pos)
+        var vect = p5.Vector.sub(target,this.pos);
+        var vect_unit = vect.normalize();
+        vect_unit.setMag(20);
+        while (vect_unit >! vect) {
+            this.pos.add(vect_unit);
+        }
         this.pos.add(vect);
        
         // this.acc.mult(0);
@@ -33,7 +38,7 @@ function Particle(x,y) {
 
         //draws the object
         this.show = function() {
-            stroke(255,255,255);
+            stroke(random(255),random(255),0);
             strokeWeight(1);
             point(this.pos.x,this.pos.y);
             circle(this.pos.x,this.pos.y,100);
