@@ -4,13 +4,15 @@
 
 function Particle(x,y) {
     this.pos = createVector(x,y);
-    this.vel = createVector();
-    this.acc = createVector();
+    this.vel = createVector(4,4);
+    // this.acc = createVector();
 
     
-    this.update = function() {
+    this.update = function(target) {
         // this.vel.add(this.acc);
-        this.pos.add(this.vel);
+        var vect = p5.Vector.sub(target,this.pos)
+        this.pos.add(vect);
+       
         // this.acc.mult(0);
     }
     

@@ -42,7 +42,7 @@ function draw() {
     for (var i = 0; i < particles.length; i++) {
         var particle = particles[i];
         particle.attracted(attractor);
-        particle.update();
+        particle.update(attractor);
         particle.show();
     }
     }
