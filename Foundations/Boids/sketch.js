@@ -4,9 +4,10 @@
 // Attraction / Repulsion
 // Video: https://youtu.be/OAcXnzRNiCY
 
-var attractor;
+// var attractor;
 var particles  = [];
 var rad = 100;
+var circles = [];
 
 function setup() {
     createCanvas(800,800);
@@ -44,6 +45,7 @@ function draw() {
         var particle = particles[i];
         particle.update(rad,attractor);
         particle.show(attractor);
+        circles.push(particle);
         fixit();        
     }
 
@@ -51,8 +53,9 @@ function draw() {
         for (var i = 0; i < particles.length-1; i++) {
             var particle1 = particles[i];
             var particle2 = particles[i+1];
-            print("Hello");
-            console.log(i);
+            // print("Hello");
+
+            console.log(particle1.x);
             // var vect = p5.Vector.sub((particle2.x,particle2.y),(particle1.x,particle1.y));
     }
     }
