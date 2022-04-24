@@ -8,7 +8,7 @@ function Particle(x,y,r)
     this.vel = createVector();
     this.rad = r;
     this.space = [100,200,50,25,255,10,75,65,125];
-    this.spaces = [(255,0,0)];
+    this.spaces = ['red','green','yellow','blue'];
     this.color = random(this.spaces);
     print("color is...",this.color);
     

@@ -4,9 +4,9 @@ var particles  = [];
 var myList  = [];
 var rad = 200;
 var circles = [];
-var spaces = [50,100,150,200,250,300];
+var spaces = [50,200,75,125,100,150];
 function setup() {
-    createCanvas(800,800);
+    createCanvas(1200,1200);
     // frameRate(10);
     //Creating an attactor here since it is fixed
     attractor = createVector(width/2,height/2);
@@ -34,7 +34,7 @@ function draw() {
     stroke(0,255,0,5); //gives the color
     fill(0,255,0,125);
     circle(width/2,height/2,100);
-    rect(width/2);
+    // rect(width/2,height/2,300,300);
     
     //Attractor point
     strokeWeight(2);
@@ -46,7 +46,6 @@ function draw() {
     {
         var particle = particles[i];
         particle.update(rad,attractor,att_r,myList);
-        particle.show(attractor);
-        circles.push(particle);        
+        particle.show(attractor);       
     }
 }
