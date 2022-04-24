@@ -16,6 +16,7 @@ function setup() {
     x.push(width/2);
     y.push(height/2);
     r.push(200);
+    // var vel = createVector();
 }
 
 function mousePressed() {
@@ -23,37 +24,40 @@ function mousePressed() {
     pressedY.push(mouseY);
 }
 
-
-function update() {
-    for (var i = 0; i < spaces.length; i++) {
-        var pos = createVector(x[i],y[i]);
-        var vel = createVector();
-        var rad = spaces[i];
+function update(pos,pos2) {
+    // for (var i = 0; i < spaces.length; i++) {
+        //     var pos = createVector(pressedX[i],pressedY[i]);
+        //     // console.log(pos);
+        //     var rad = spaces[i];
         var d = dist(pos.x,pos.y,400,400);
-
+        
         if (d > 100) {
-            var vect = p5.Vector.sub(target,this.pos);
-            // var v = vect.mag();
+            var vect = p5.Vector.sub(pos2,pos);
+            var v = vect.mag();
+            console.log(v);
             var vect_unit = vect.normalize();
             vect_unit.setMag(1);
-            this.pos.add(vect_unit);
-
+            pos.add(vect);
+        }
     }
-    }}
-
-// console.log(spaces.length);
-function draw() {
-    newX = 400;
-    newY = 400;
-    background(100);
-    // noFill();
-    // draw the shapes from the functions
-    for (var i = 0; i < spaces.length; i++) {
-        fill(colors[i]);
-        circle(pressedX[i],pressedY[i],spaces[i]);
-    }
-    var closest_dist = Number.MAX_VALUE;
-    var closest_idx = 0;
+    
+    // console.log(spaces.length);
+    function draw() {
+        newX = 400;
+        newY = 400;
+        background(100);
+        // noFill();
+        // draw the shapes from the functions
+        for (var i = 0; i < spaces.length; i++) {
+            var pos = createVector(pressedX[i],pressedY[i]);
+            var pos2 = createVector(400,400);
+            fill(colors[i]);
+            line(pos.x,pos.y,400,400);
+            update(pos,pos2);
+            circle(pos.x,pos.y,100);
+        }
+        var closest_dist = Number.MAX_VALUE;
+        var closest_idx = 0;
     //find the closest circle
     for (var i = 0; i < currentCount; i++ ) {
         var new_dist = dist(newX,newY, x[i],y[i]);
