@@ -2,16 +2,18 @@
 // attracted to the point
 // restricted to the radius
 
-function Particle(x,y,r) {
+function Particle(x,y,r) 
+{
     this.pos = createVector(x,y);
     this.vel = createVector();
     this.rad = r;
-    // print("radius is",this.rad);
-    // this.acc = createVector();
+    this.space = [100,200,50,25,255,10,75,65,125];
+    this.spaces = [(255,0,0)];
+    this.color = random(this.spaces);
+    print("color is...",this.color);
     
     //change the object per frame
     this.update = function(radius,target,att_r,myList) {
-        // myList.pop();
         closest_dist = Number.MAX_VALUE;
         closest_idx = 0;
         for (var i = 0; i < myList.length-1; i++) 
@@ -40,7 +42,7 @@ function Particle(x,y,r) {
         print("closest index is...",closest_idx);
         d1 = dist(this.pos.x,this.pos.y,c.pos.x,c.pos.y);
         print("d1 is...",d1);
-        if (d1 > (c.rad)) {
+        if (d1 > (c.rad/2 + this.rad/2)) {
             var vect = p5.Vector.sub(c.pos,this.pos);
             // var v = vect.mag();
             var vect_unit = vect.normalize();
@@ -65,11 +67,13 @@ function Particle(x,y,r) {
         }
 
         //draws the object
+    
     this.show = function(target) {
         stroke(10);
-        strokeWeight(0.1);
+        strokeWeight(0.5);
         line(this.pos.x,this.pos.y,target.x,target.y);
-        strokeWeight(1);
+        // strokeWeight(1);
+        fill(this.color);
         point(this.pos.x,this.pos.y);
         circle(this.pos.x,this.pos.y,this.rad);
             // console.log(this.pos);

@@ -1,15 +1,10 @@
-// Reference
-// Daniel Shiffman
-// http://codingtra.in
-// Attraction / Repulsion
-// Video: https://youtu.be/OAcXnzRNiCY
 
 // var attractor;
 var particles  = [];
 var myList  = [];
 var rad = 200;
 var circles = [];
-// var spaces = [100,200,150,300,600];
+var spaces = [50,100,150,200,250,300];
 function setup() {
     createCanvas(800,800);
     // frameRate(10);
@@ -18,25 +13,30 @@ function setup() {
     center = (400,400,100);
     // print("my list has...",myList);
     att_r = 100;
-    myList.push(new Particle(200,200,100));
+    myList.push(new Particle(width/2,height/2,100));
+    
 }
 
 function mousePressed()
 {
-    var n = new Particle(mouseX,mouseY,100); //change random to space areas
+    var r = random(spaces);
+    var n = new Particle(mouseX,mouseY,r); //change random to space areas
     particles.push(n);
     myList.push(n);
     // print("my list has...",myList);
 }
 
 //draw dynamic elements on the screen
+
 function draw() {
-    background(150);
+    background(175);
     rectMode(CENTER);
-    circle(200,200,100);
+    stroke(0,255,0,5); //gives the color
+    fill(0,255,0,125);
+    circle(width/2,height/2,100);
+    rect(width/2);
     
     //Attractor point
-    stroke(0,255,0); //gives the color
     strokeWeight(2);
     noFill();
     point(attractor.x,attractor.y);
