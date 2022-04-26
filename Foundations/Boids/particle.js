@@ -1,17 +1,19 @@
-//click and get the circle
-// attracted to the point
-// restricted to the radius
+//sachindabas
+//references: Daniel Shifman: https://www.youtube.com/watch?v=OAcXnzRNiCY
 
+
+//Agent class
 function Particle(x,y,r) 
 {
     this.pos = createVector(x,y);
     this.vel = createVector();
     this.rad = r;
+    //define the spaces
     this.space = [100,200,50,25,255,10,75,65,125];
     this.spaces = ['red','green','yellow','blue'];
     this.color = random(this.spaces);
     print("color is...",this.color);
-    
+
     //change the object per frame
     this.update = function(radius,target,att_r,myList) {
         closest_dist = Number.MAX_VALUE;
@@ -50,32 +52,16 @@ function Particle(x,y,r)
             this.pos.add(vect_unit);
         }
     }
-    
-    //attracts the object
-    this.attracted = function(target) {
-        var force = p5.Vector.sub(target,this.pos);
-        
-        // var d = force.magSq();
-        // d = constrain(d,5,25);
-        // var G = 100;
-        // var strength = G / (d * d);
-        // force.setMag(1);
-        // if (d < 5) {
-            //     force.mult(-1);
-            // } 
-            // this.acc = force;
-        }
 
-        //draws the object
-    
+    //draws the object
     this.show = function(target) {
         stroke(10);
         strokeWeight(0.5);
         line(this.pos.x,this.pos.y,target.x,target.y);
         // strokeWeight(1);
-        fill(this.color);
+        fill(random(this.spaces));
+        strokeWeight(1);
         point(this.pos.x,this.pos.y);
         circle(this.pos.x,this.pos.y,this.rad);
-            // console.log(this.pos);
         }
 }
